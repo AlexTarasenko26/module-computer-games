@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="computer_games" engine="innodb" comment="Computer games table" resource="default">
+        <column xsi:type="int" name="game_id" padding="10" unsigned="true"
+                nullable="false" identity="true" comment="Primary"/>
+        <column xsi:type="text" name="image" nullable="false" comment="Image"/>
+        <column xsi:type="text" name="name" nullable="false" comment="Name"/>
+        <column xsi:type="text" name="type" nullable="false" comment="Game type: RPG, Simulator, Shooter, RTS, MMO"/>
+        <column xsi:type="int" name="trial_period" padding="3" unsigned="true"
+                nullable="false" comment="Trial period"/>
+        <column xsi:type="date" name="release_date" nullable="false" comment="Release date"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="game_id"/>
+        </constraint>
+    </table>
+</schema>

@@ -11,6 +11,10 @@
         <column xsi:type="int" name="trial_period" padding="3" unsigned="true"
                 nullable="false" comment="Trial period"/>
         <column xsi:type="date" name="release_date" nullable="false" comment="Release date"/>
+        <column xsi:type="timestamp" name="creation_time" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Game Creation Time"/>
+        <column xsi:type="timestamp" name="update_time" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Game Modification Time"/>
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="game_id"/>
         </constraint>

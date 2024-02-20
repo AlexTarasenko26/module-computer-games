@@ -11,17 +11,16 @@ class DeleteButton extends GenericButton implements ButtonProviderInterface
 
     /**
      * @return array
-     * @throws NoSuchEntityException
      */
     public function getButtonData()
     {
         $data = [];
-        if ($this->getGameId()) {
+        if ($this->getGameId() > 0) {
             $data = [
                 'label' => __('Delete Game'),
                 'class' => 'delete',
                 'on_click' => 'deleteConfirm(\'' . __(
-                        'Are you sure you want to do this?'
+                        'Are you sure you want to delete this game?'
                     ) . '\', \'' . $this->getDeleteUrl() . '\', {"data": {}})',
                 'sort_order' => 20,
             ];
@@ -31,7 +30,6 @@ class DeleteButton extends GenericButton implements ButtonProviderInterface
 
     /**
      * @return string
-     * @throws NoSuchEntityException
      */
     public function getDeleteUrl()
     {

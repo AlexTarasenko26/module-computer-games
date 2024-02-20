@@ -81,7 +81,7 @@
                 </param>
             </childDefaults>
         </settings>
-        <selectionsColumn name="ids">
+        <selectionsColumn name="ids" sortOrder="0">
             <settings>
                 <indexField>game_id</indexField>
                 <resizeEnabled>false</resizeEnabled>
@@ -95,13 +95,26 @@
                 <sorting>asc</sorting>
             </settings>
         </column>
-        <column name="name">
+        <column name="image"
+                class="Epam\ComputerGames\Ui\Component\Listing\Column\Image"
+                component="Magento_Ui/js/grid/columns/thumbnail" sortOrder="20">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">games</item>
+                </item>
+            </argument>
+            <settings>
+                <label translate="true">Image</label>
+                <hasPreview>1</hasPreview>
+            </settings>
+        </column>
+        <column name="name" sortOrder="30">
             <settings>
                 <filter>text</filter>
                 <label translate="true">Name</label>
             </settings>
         </column>
-        <column name="type" component="Magento_Ui/js/grid/columns/select">
+        <column name="type" component="Magento_Ui/js/grid/columns/select" sortOrder="40">
             <settings>
                 <options class="Epam\ComputerGames\Ui\Component\Options\Types"/>
                 <filter>select</filter>
@@ -109,7 +122,7 @@
                 <label translate="true">Type</label>
             </settings>
         </column>
-        <column name="trial_period" class="Epam\ComputerGames\Ui\Component\Listing\Column\TrialPeriods">
+        <column name="trial_period" class="Epam\ComputerGames\Ui\Component\Listing\Column\TrialPeriods" sortOrder="50">
             <settings>
                 <options
                     class="Epam\ComputerGames\Ui\Component\Options\TrialPeriods"/>
@@ -128,21 +141,8 @@
                 <visible>false</visible>
             </settings>
         </column>
-        <column name="image"
-                class="Epam\ComputerGames\Ui\Component\Listing\Column\Image"
-                component="Magento_Ui/js/grid/columns/thumbnail" sortOrder="0" displayArea="generalarea">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">games</item>
-                </item>
-            </argument>
-            <settings>
-                <label translate="true">Image</label>
-                <hasPreview>1</hasPreview>
-            </settings>
-        </column>
         <actionsColumn name="actions"
-                       class="Epam\ComputerGames\Ui\Component\Listing\Column\GameActions" sortOrder="200">
+                       class="Epam\ComputerGames\Ui\Component\Listing\Column\GameActions" sortOrder="100">
             <settings>
                 <indexField>entity_id</indexField>
             </settings>

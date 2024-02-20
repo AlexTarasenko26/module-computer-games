@@ -67,9 +67,11 @@ class GameActions extends Column
                         'href' => $this->urlBuilder->getUrl(
                             self::GAME_URL_PATH_DELETE, ['game_id' => $item['game_id']]),
                         'label' => __('Delete'), 'confirm' => [
-                            'title' => __('Delete ${ $.$data.name }'),
-                            'message' => __('Are you sure you wan\'t to delete a ${$.$data.name } record?')
-                        ]];
+                            'title' => __('Delete game'),
+                            'message' => __('Are you sure you wan\'t to delete this record?')
+                        ],
+                        'post' => true
+                    ];
                 }
             }
         }

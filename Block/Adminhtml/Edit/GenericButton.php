@@ -35,7 +35,6 @@ class GenericButton
 
     /**
      * @return int
-     * @throws NoSuchEntityException
      */
     public function getGameId()
     {
@@ -43,9 +42,9 @@ class GenericButton
         try {
             return $this->gameRepository->get($gameId)->getGameId();
         } catch (NoSuchEntityException $e) {
-            throw new NoSuchEntityException(
-                __('There is no game with id %1', $gameId)
-            );
+            $gameId = 0;
+
         }
+        return $gameId;
     }
 }

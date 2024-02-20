@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider"
+                  xsi:type="string">computer_games_form.game_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Computer Game
+            Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="save"
+                    class="Epam\ComputerGames\Block\Adminhtml\Edit\SaveButton"/>
+            <button name="delete"
+                    class="Epam\ComputerGames\Block\Adminhtml\Edit\DeleteButton"/>
+            <button name="back"
+                    class="Epam\ComputerGames\Block\Adminhtml\Edit\BackButton"/>
+        </buttons>
+        <namespace>computer_games_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>computer_games_form.game_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="game_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component"
+                      xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="games/game/save"/>
+        </settings>
+        <dataProvider class="Epam\ComputerGames\Ui\Component\Form\DataProvider"
+                      name="game_form_data_source">
+            <settings>
+                <requestFieldName>game_id</requestFieldName>
+                <primaryFieldName>game_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general">
+        <settings>
+            <componentType>fieldset</componentType>
+            <label translate="true">Information</label>
+        </settings>
+        <field name="game_id" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">computer_games</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <visible>false</visible>
+                <dataScope>game_id</dataScope>
+            </settings>
+        </field>
+        <field name="name" sortOrder="20" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">computer_games</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Name</label>
+                <dataScope>name</dataScope>
+            </settings>
+        </field>
+        <field name="type" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">computer_games</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>number</dataType>
+                <label translate="true">Type</label>
+                <dataScope>type</dataScope>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options
+                            class="Epam\ComputerGames\Ui\Component\Options\Types"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="trial_period" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">computer_games</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>number</dataType>
+                <label translate="true">Trial Period</label>
+                <dataScope>trial_period</dataScope>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options
+                            class="Epam\ComputerGames\Ui\Component\Options\TrialPeriods"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="release_date" formElement="date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">computer_games</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <rule name="validate-date" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Release Date</label>
+                <dataScope>release_date</dataScope>
+            </settings>
+        </field>
+    </fieldset>
+</form>

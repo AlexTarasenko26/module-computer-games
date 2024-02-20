@@ -25,10 +25,6 @@ class GameActions extends Column
      * @var UrlInterface
      */
     protected $urlBuilder;
-    /**
-     * @var string
-     */
-    private $editUrl;
 
     /**
      * @param ContextInterface $context
@@ -37,7 +33,6 @@ class GameActions extends Column
      * @param UrlInterface $urlBuilder
      * @param array $components
      * @param array $data
-     * @param $editUrl
      */
     public function __construct(
         ContextInterface   $context,
@@ -45,13 +40,11 @@ class GameActions extends Column
         UrlBuilder         $actionUrlBuilder,
         UrlInterface       $urlBuilder,
         array              $components = [],
-        array              $data = [],
-                           $editUrl = self::GAME_URL_PATH_EDIT
+        array              $data = []
     )
     {
         $this->urlBuilder = $urlBuilder;
         $this->actionUrlBuilder = $actionUrlBuilder;
-        $this->editUrl = $editUrl;
         parent::__construct($context, $uiComponentFactory, $components, $data);
     }
 
@@ -66,7 +59,7 @@ class GameActions extends Column
                 $name = $this->getData('name');
                 if (isset($item['game_id'])) {
                     $item[$name]['edit'] = [
-                        'href' => $this->urlBuilder->getUrl($this->editUrl,
+                        'href' => $this->urlBuilder->getUrl(self::GAME_URL_PATH_EDIT,
                             ['game_id' => $item['game_id']]),
                         'label' => __('Edit')
                     ];

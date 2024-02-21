@@ -5,8 +5,6 @@ namespace Epam\ComputerGames\Controller\Adminhtml\Game;
 
 use Magento\Backend\App\Action;
 use Magento\Framework\App\Action\HttpGetActionInterface;
-use Magento\Framework\App\ResponseInterface;
-use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\View\Result\Page;
 use Magento\Framework\View\Result\PageFactory;
 
@@ -32,7 +30,7 @@ class Edit extends Action implements HttpGetActionInterface
     }
 
     /**
-     * @return ResponseInterface|ResultInterface|Page
+     * @return Page
      */
     public function execute()
     {

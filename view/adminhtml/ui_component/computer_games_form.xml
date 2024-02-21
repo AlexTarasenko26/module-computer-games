@@ -131,5 +131,29 @@
                 <dataScope>release_date</dataScope>
             </settings>
         </field>
+        <field name="image" formElement="imageUploader">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">computer_games</item>
+                </item>
+            </argument>
+            <settings>
+                <label translate="true">Image</label>
+                <elementTmpl>ui/form/element/uploader/image</elementTmpl>
+                <visible>true</visible>
+            </settings>
+            <formElements>
+                <imageUploader>
+                    <settings>
+                        <uploaderConfig>
+                            <param xsi:type="string"
+                                   name="url">games/game_fileUploader/save</param>
+                        </uploaderConfig>
+                        <allowedExtensions>jpg jpeg png</allowedExtensions>
+                        <maxFileSize>2097152</maxFileSize>
+                    </settings>
+                </imageUploader>
+            </formElements>
+        </field>
     </fieldset>
 </form>

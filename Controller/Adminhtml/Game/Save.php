@@ -19,9 +19,9 @@ class Save extends Action implements HttpPostActionInterface
      * @param GameFactory $gameFactory
      */
     public function __construct(
-        Context                       $context,
-        private readonly GameResource $resource,
-        private readonly GameFactory  $gameFactory
+        Context                        $context,
+        private readonly GameResource  $resource,
+        private readonly GameFactory   $gameFactory
     )
     {
         parent::__construct($context);
@@ -40,8 +40,14 @@ class Save extends Action implements HttpPostActionInterface
             if (empty($data['game_id'])) {
                 $data['game_id'] = null;
             }
-            $data['update_time'] = null;
 
+            if (isset($data['image']) && !empty($data['image'][0]['name'])) {
+                $data['image'] = $data['image'][0]['name'];
+            } else {
+                unset($data['image']);
+            }
+
+            $data['update_time'] = null;
             $model->setData($data);
 
             try {

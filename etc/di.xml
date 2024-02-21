@@ -2,7 +2,8 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="Epam\ComputerGames\Api\Data\GameInterface" type="Epam\ComputerGames\Model\Game"/>
-    <preference for="Epam\ComputerGames\Api\Data\GameRepositoryInterface" type="Epam\ComputerGames\Model\GameRepository"/>
+    <preference for="Epam\ComputerGames\Api\Data\GameRepositoryInterface"
+                type="Epam\ComputerGames\Model\GameRepository"/>
     <virtualType name="ComputerGamesGridDataProvider"
                  type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
         <arguments>
@@ -17,6 +18,65 @@
                 <item name="computer_games_listing_data_source"
                       xsi:type="string">Epam\ComputerGames\Model\ResourceModel\Game\Collection
                 </item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="gamesImageUploader" type="Magento\Catalog\Model\ImageUploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="string">tmp/upload/games</argument>
+            <argument name="basePath" xsi:type="string">games/upload</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Epam\ComputerGames\Controller\Adminhtml\Game\FileUploader\Save">
+        <arguments>
+            <argument name="imageUploader"
+                      xsi:type="object">gamesImageUploader
+            </argument>
+        </arguments>
+    </type>
+    <type name="Epam\ComputerGames\Controller\Adminhtml\Game\Save">
+        <arguments>
+            <argument name="imageUploader"
+                      xsi:type="object">gamesImageUploader
+            </argument>
+        </arguments>
+    </type>
+    <type name="Epam\ComputerGames\Ui\Component\Listing\Column\Image">
+        <arguments>
+            <argument name="imageUploader"
+                      xsi:type="object">gamesImageUploader
+            </argument>
+        </arguments>
+    </type>
+    <type name="Epam\ComputerGames\Ui\Component\Form\ImageModifier">
+        <arguments>
+            <argument name="imageUploader"
+                      xsi:type="object">gamesImageUploader
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="GamesImageUploaderUiDataProviderImageFormModifierPool"
+                 type="Magento\Ui\DataProvider\Modifier\Pool">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="image_data" xsi:type="array">
+                    <item name="class"
+                          xsi:type="string">Epam\ComputerGames\Ui\Component\Form\ImageModifier
+                    </item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Epam\ComputerGames\Ui\Component\Form\DataProvider">
+        <arguments>
+            <argument name="pool"
+                      xsi:type="object">GamesImageUploaderUiDataProviderImageFormModifierPool
             </argument>
         </arguments>
     </type>

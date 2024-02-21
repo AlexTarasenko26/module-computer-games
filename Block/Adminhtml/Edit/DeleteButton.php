@@ -23,6 +23,7 @@ class DeleteButton extends GenericButton implements ButtonProviderInterface
                         'Are you sure you want to delete this game?'
                     ) . '\', \'' . $this->getDeleteUrl() . '\', {"data": {}})',
                 'sort_order' => 20,
+                'post' => true
             ];
         }
         return $data;

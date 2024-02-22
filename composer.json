@@ -1,0 +1,17 @@
+{
+    "name": "epam/computergames",
+    "description": "Add computer games product",
+    "require": {
+        "php": "~8.0.0 || ~8.1.0 || ~8.2.0"
+    },
+    "type": "magento2-module",
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Epam\\ComputerGames\\": ""
+        }
+    },
+    "version": "1.0.0"
+}

@@ -83,7 +83,7 @@ class Game extends AbstractExtensibleModel implements GameInterface
      */
     public function getTrialPeriod(): int
     {
-        return $this->getData(self::TRIAL_PERIOD);
+        return (int)$this->getData(self::TRIAL_PERIOD);
     }
 
     /**

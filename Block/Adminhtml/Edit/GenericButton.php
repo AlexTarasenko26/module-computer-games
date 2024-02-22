@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace Epam\ComputerGames\Block\Adminhtml\Edit;
 
+use Epam\ComputerGames\Api\GameRepositoryInterface;
 use Magento\Backend\Block\Widget\Context;
-use Epam\ComputerGames\Api\Data\GameRepositoryInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\UrlInterface;
 
@@ -40,7 +40,7 @@ class GenericButton
     {
         $gameId = $this->context->getRequest()->getParam('game_id');
         try {
-            return $this->gameRepository->get($gameId)->getGameId();
+            return $this->gameRepository->getById($gameId)->getGameId();
         } catch (NoSuchEntityException $e) {
             $gameId = 0;
 

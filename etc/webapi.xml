@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <!-- Games CRUD operations -->
+    <route url="/V1/games/:gameId" method="GET">
+        <service class="Epam\ComputerGames\Api\GameRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/games" method="POST">
+        <service class="Epam\ComputerGames\Api\GameRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/games/:gameId" method="PUT">
+        <service class="Epam\ComputerGames\Api\GameRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/games/:gameId" method="DELETE">
+        <service class="Epam\ComputerGames\Api\GameRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+<!--    <route url="/V1/blogPost/search" method="GET">-->
+<!--        <service class="MageMastery\Blog\Api\PostRepositoryInterface" method="getList"/>-->
+<!--        <resources>-->
+<!--            <resource ref="anonymous"/>-->
+<!--        </resources>-->
+<!--    </route>-->
+</routes>

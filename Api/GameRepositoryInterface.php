@@ -1,17 +1,17 @@
 <?php
 declare(strict_types=1);
 
-namespace Epam\ComputerGames\Api\Data;
+namespace Epam\ComputerGames\Api;
 
 use Epam\ComputerGames\Api\Data\GameInterface as GameInterface;
 
 interface GameRepositoryInterface
 {
     /**
-     * @param int $id
+     * @param int $gameId
      * @return GameInterface
      */
-    public function get($id): GameInterface;
+    public function getById($gameId): GameInterface;
 
     /**
      * @param GameInterface $game
@@ -25,5 +25,11 @@ interface GameRepositoryInterface
      * @throws \Exception
      */
     public function delete(GameInterface $game): bool;
+
+    /**
+     * @param int $gameId
+     * @return bool
+     */
+    public function deleteById($gameId): bool;
 
 }

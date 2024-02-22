@@ -4,9 +4,8 @@ declare(strict_types=1);
 namespace Epam\ComputerGames\Model;
 
 use Epam\ComputerGames\Api\Data\GameInterface;
-use Epam\ComputerGames\Api\Data\GameRepositoryInterface;
+use Epam\ComputerGames\Api\GameRepositoryInterface;
 use Epam\ComputerGames\Model\ResourceModel\Game as GameResourceModel;
-use Epam\ComputerGames\Model\GameFactory;
 use Magento\Framework\Exception\AlreadyExistsException;
 use Magento\Framework\Exception\CouldNotDeleteException;
 use Magento\Framework\Exception\NoSuchEntityException;
@@ -27,17 +26,17 @@ class GameRepository implements GameRepositoryInterface
     }
 
     /**
-     * @param int $id
+     * @param int $gameId
      * @return GameInterface
      * @throws NoSuchEntityException
      */
-    public function get($id): GameInterface
+    public function getById($gameId): GameInterface
     {
         $game = $this->gameFactory->create();
-        $this->gameResourceModel->load($game, $id);
+        $this->gameResourceModel->load($game, $gameId);
         if (!$game->getGameId()) {
             throw new NoSuchEntityException(
-                __('There is no game with id %1', $id)
+                __('There is no game with id %1', $gameId)
             );
         }
         return $game;
@@ -67,5 +66,15 @@ class GameRepository implements GameRepositoryInterface
             throw new CouldNotDeleteException(__($exception->getMessage()));
         }
         return true;
+    }
+
+    /**
+     * @param $gameId
+     * @return bool
+     * @throws NoSuchEntityException
+     */
+    public function deleteById($gameId): bool
+    {
+        return $this->delete($this->getById($gameId));
     }
 }

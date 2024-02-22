@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Epam\ComputerGames\Ui\Component\Listing\Column;
 
-use Epam\ComputerGames\Api\Data\GameRepositoryInterface;
+use Epam\ComputerGames\Api\GameRepositoryInterface;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Ui\Component\Listing\Columns\Column;
@@ -43,7 +43,7 @@ class TrialPeriods extends Column
     {
         if (isset($dataSource['data']['items'])) {
             foreach ($dataSource['data']['items'] as & $item) {
-                $game = $this->gameRepository->get((int)$item["game_id"]);
+                $game = $this->gameRepository->getById((int)$item["game_id"]);
                 $trialPeriod = $game->getData("trial_period");
                 // Logic to retrieve data for the custom column
                 switch ((int)$trialPeriod) {
